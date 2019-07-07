@@ -8,7 +8,7 @@ https://www.geeksforgeeks.org/topological-sorting/
 *   NOTE: You must return dynamically allocated array 
 */
 map<int,int>vis;
-vector<int>v;
+list<int>v;
 
 void dfshelper(vector<int>adj[],int src)
 {
@@ -18,7 +18,7 @@ void dfshelper(vector<int>adj[],int src)
         if(!vis[x])
             dfshelper(adj,x);
     }
-    v.push_back(src);
+    v.push_front(src);
 }
 
 int* topoSort(int V, vector<int> adj[])
