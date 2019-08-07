@@ -21,6 +21,7 @@ int32_t main()
 		int rot = d;
 		while(rot--)
 		{
+			
 			num <<= 1;
 		}
 		cout<<num<<endl;
