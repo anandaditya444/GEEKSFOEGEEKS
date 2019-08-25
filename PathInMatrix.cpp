@@ -11,14 +11,17 @@ using namespace std;
 
 const int N = 25;
 int mat[N][N];
+int memo[N][N];
 
 int dp(int i,int j)
 {
 	if(i < 1 || j < 1)
-		return -1e12;
+		return memo[i][j] = -1e12;
 	else if(i == 1 && j == 1)
-		return mat[i][j];
-	return mat[i][j] + max(dp(i-1,j),max(dp(i,j-1),dp(i-1,j-1))); 
+		return memo[i][j] = mat[i][j];
+	if(memo[i][j] != -1)
+		return memo[i][j];
+	return memo[i][j] = mat[i][j] + max(dp(i-1,j),max(dp(i,j-1),dp(i-1,j-1))); 
 }
 
 int32_t main()
@@ -29,6 +32,7 @@ int32_t main()
 	while(t--)
 	{
 		cin>>n;
+		memset(memo,-1,sizeof(memo));
 		for(int i=1;i<=n;i++)
 		{
 			for(int j=1;j<=n;j++)
